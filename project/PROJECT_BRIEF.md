@@ -6,9 +6,33 @@ This is a simulated confidential-client engagement using public/open data. Stake
 
 ## Problem and commission
 
-Quality inspectors need consistent fault routing and a clearer view of difficult-to-classify defect patterns. The dataset contains seven fault classes and no good plates, so it can support defect classification and specialist review routing but cannot measure production defect incidence or automatic accept/reject performance.
+The quality manager needs consistent routing of already detected steel-plate faults to the right inspection specialist. Misclassifying two similar fault types can delay investigation, while routing every example manually consumes specialist capacity. The dataset can compare seven-class routing and low-confidence referral; it cannot establish how many normal plates pass inspection or estimate a factory-wide defect rate.
 
 > Choose a seven-class defect-routing prototype and a low-confidence specialist inspection queue.
+
+## Practical use case and business outputs
+
+At weekly quality review, inspectors examine the top confusion pairs, compare confidence thresholds and choose an offline fault-routing prototype with a specialist-review queue and three process-investigation hypotheses.
+
+| Deliverable | What the team must hand over | Required contents |
+| --- | --- | --- |
+| D5 | Fault schema and class-mix audit | Ordered 27 predictors/seven labels, 1,941 source examples, one-hot validity, per-class counts and duplicate/conflicting-label register. |
+| D6 | Seven-class evaluation and error review | Majority baseline and interpretable candidate with macro F1, balanced accuracy, seven recalls, full confusion matrix and top-three confusion pairs. |
+| D7 | Confidence-based routing policy | Thresholds 0.50/0.60/0.70 with auto-route coverage/accuracy and specialist review workload; ten worked routing cases. |
+| D8 | Quality routing dashboard | Class mix, error pairs, confidence/workload comparison and source limitations. |
+| D11 | Inspection handover and three investigation cards | Fault-routing instructions, ten-case handover and three non-causal process hypotheses with measurements needed from a real factory. |
+
+## Required success contract
+
+| Success ID | Required deliverable | Specific pass condition |
+| --- | --- | --- |
+| SC1 | D5 — Fault schema and class-mix audit | Exactly one active class per valid row; malformed labels quarantined; all 34 source columns mapped; no invented normal class or production denominator. |
+| SC2 | D6 — Seven-class evaluation and error review | Labels excluded from predictors; duplicate feature groups kept together; all class supports reported and undefined outcomes explicit; include ten reviewed errors. |
+| SC3 | D7 — Confidence-based routing policy | At 0.60, score 0.599 refers and 0.600 is eligible; every case has predicted/actual class, confidence, routing owner and review reason; no production accept/reject claim. |
+| SC4 | D8 — Quality routing dashboard | Reviewer finds the largest confusion pair, shows its two class recalls and traces one low-confidence case into specialist review. |
+| SC5 | D11 — Inspection handover and three investigation cards | Each hypothesis names quality/process owner and required batch/time/normal-plate evidence; no asserted root cause, defect reduction or reject-rate improvement. |
+
+[Detailed acceptance](ACCEPTANCE_CRITERIA.md) defines executed evidence; [deliverables](DELIVERABLES.md) defines exact artefacts and ownership. G1 records simulated sponsor approval, not invented real-client agreement.
 
 ## Core scope
 

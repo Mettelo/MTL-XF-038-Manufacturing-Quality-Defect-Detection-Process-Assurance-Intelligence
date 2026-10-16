@@ -10,14 +10,79 @@ Acceptance requires executed evidence, not headings. Quality Model Assurance Ana
 | AC2 | D2 | Every required file/field is verified and approved; unsupported requirements explicitly block G1. |
 | AC3 | D3 | Input=retained+excluded+quarantined exactly; no unexplained join multiplication; clean-run instructions exist. |
 | AC4 | D4 | Every treatment has affected count, reason, owner and reviewer; no silent row loss or coercion. |
-| AC5 | D5 | All seven reviewed; K1–K5 reconcile independently and in BI on full cohort and one filtered slice. |
-| AC6 | D6 | Baseline and alternative results, population/class counts, uncertainty, negative findings and feature/timing audit retained; no test-driven tuning. |
-| AC7 | D7 | Both policies and sensitivity outputs supplied; every action has evidence, eligibility, owner, next review and uncertainty. Include a defer case. |
-| AC8 | D8 | Five metric/filter checks pass; frozen scope and limitations survive export; static copy/user guide require no paid access. |
+| AC5 | D5 / SC1 | Exactly one active class per valid row; malformed labels quarantined; all 34 source columns mapped; no invented normal class or production denominator. |
+| AC6 | D6 / SC2 | Labels excluded from predictors; duplicate feature groups kept together; all class supports reported and undefined outcomes explicit; include ten reviewed errors. |
+| AC7 | D7 / SC3 | At 0.60, score 0.599 refers and 0.600 is eligible; every case has predicted/actual class, confidence, routing owner and review reason; no production accept/reject claim. |
+| AC8 | D8 / SC4 | Reviewer finds the largest confusion pair, shows its two class recalls and traces one low-confidence case into specialist review. |
 | AC9 | D9 | All ten tests and three tasks pass; zero unresolved critical/high defects. |
 | AC10 | D10 | Second member reproduces all seven KPIs and policy queue from approved bytes; environment, elapsed time and discrepancies recorded. |
-| AC11 | D11 | Every numeric claim links tested evidence; costs/benefits and operational targets are labelled assumptions unless measured. |
+| AC11 | D11 / SC5 | Each hypothesis names quality/process owner and required batch/time/normal-plate evidence; no asserted root cause, defect reduction or reject-rate improvement. |
 | AC12 | D12 | All D/AC/DT evidence links resolve at final commit/tag; individual contribution is demonstrated beyond bulk upload or commit count. |
+
+## SC1–SC5 — Business output success contracts
+
+These requirements supplement AC1–AC12 and are mandatory. Record approval at G1, then execute against final outputs. All five require PASS with traceable evidence, or a formally approved scope revision; an unmet model-performance target must be reported as unmet and reflected in the recommendation.
+
+### SC1 / D5 — Fault schema and class-mix audit
+
+**Accountable delivery role:** Manufacturing Quality Analyst. **Business reviewer:** Head of Manufacturing Quality. **Independent assurance:** Quality Model Assurance Analyst.
+
+**Required artefact:** data/curated/fault-schema-and-class-mix-audit.csv and docs/05-kpi-catalogue/fault-schema-and-class-mix-audit.md.
+
+**Content:** Ordered 27 predictors/seven labels, 1,941 source examples, one-hot validity, per-class counts and duplicate/conflicting-label register.
+
+**Pass condition:** Exactly one active class per valid row; malformed labels quarantined; all 34 source columns mapped; no invented normal class or production denominator.
+
+**Evidence to retain:** actual output at final commit, source/configuration lineage, executed expected-versus-actual checks, reviewer identity/date and PASS/FAIL/BLOCKED. Do not mark complete from document presence alone.
+
+### SC2 / D6 — Seven-class evaluation and error review
+
+**Accountable delivery role:** Data Scientist / Decision Modelling Analyst. **Business reviewer:** Head of Manufacturing Quality. **Independent assurance:** Quality Model Assurance Analyst.
+
+**Required artefact:** docs/06-analysis/seven-class-evaluation-and-error-review.md plus machine-readable evaluation_results.csv.
+
+**Content:** Majority baseline and interpretable candidate with macro F1, balanced accuracy, seven recalls, full confusion matrix and top-three confusion pairs.
+
+**Pass condition:** Labels excluded from predictors; duplicate feature groups kept together; all class supports reported and undefined outcomes explicit; include ten reviewed errors.
+
+**Evidence to retain:** actual output at final commit, source/configuration lineage, executed expected-versus-actual checks, reviewer identity/date and PASS/FAIL/BLOCKED. Do not mark complete from document presence alone.
+
+### SC3 / D7 — Confidence-based routing policy
+
+**Accountable delivery role:** Manufacturing Quality Analyst. **Business reviewer:** Head of Manufacturing Quality. **Independent assurance:** Quality Model Assurance Analyst.
+
+**Required artefact:** docs/07-decision-framework/confidence-based-routing-policy.csv plus policy.md.
+
+**Content:** Thresholds 0.50/0.60/0.70 with auto-route coverage/accuracy and specialist review workload; ten worked routing cases.
+
+**Pass condition:** At 0.60, score 0.599 refers and 0.600 is eligible; every case has predicted/actual class, confidence, routing owner and review reason; no production accept/reject claim.
+
+**Evidence to retain:** actual output at final commit, source/configuration lineage, executed expected-versus-actual checks, reviewer identity/date and PASS/FAIL/BLOCKED. Do not mark complete from document presence alone.
+
+### SC4 / D8 — Quality routing dashboard
+
+**Accountable delivery role:** BI / Decision Product Developer. **Business reviewer:** Head of Manufacturing Quality. **Independent assurance:** Quality Model Assurance Analyst.
+
+**Required artefact:** dashboard/README.md, runnable dashboard/prototype and static review export.
+
+**Content:** Class mix, error pairs, confidence/workload comparison and source limitations.
+
+**Pass condition:** Reviewer finds the largest confusion pair, shows its two class recalls and traces one low-confidence case into specialist review.
+
+**Evidence to retain:** actual output at final commit, source/configuration lineage, executed expected-versus-actual checks, reviewer identity/date and PASS/FAIL/BLOCKED. Do not mark complete from document presence alone.
+
+### SC5 / D11 — Inspection handover and three investigation cards
+
+**Accountable delivery role:** Business Analyst / Delivery Lead with domain specialist. **Business reviewer:** Head of Manufacturing Quality. **Independent assurance:** Quality Model Assurance Analyst.
+
+**Required artefact:** deliverables/inspection-handover-and-three-investigation-cards.pdf plus editable slides and supporting cards/runbook.
+
+**Content:** Fault-routing instructions, ten-case handover and three non-causal process hypotheses with measurements needed from a real factory.
+
+**Pass condition:** Each hypothesis names quality/process owner and required batch/time/normal-plate evidence; no asserted root cause, defect reduction or reject-rate improvement.
+
+**Evidence to retain:** actual output at final commit, source/configuration lineage, executed expected-versus-actual checks, reviewer identity/date and PASS/FAIL/BLOCKED. Do not mark complete from document presence alone.
+
 
 ## DT1–DT10
 
@@ -36,13 +101,13 @@ Acceptance requires executed evidence, not headings. Quality Model Assurance Ana
 
 Use small synthetic fixtures for edge cases and frozen-source checks where relevant. Clearly distinguish fixture results from measured source outputs. Retain expected/actual evidence in docs/08-assurance-uat/; automate deterministic calculations where practical and document UI/interpretation reviews.
 
-## Three UAT tasks
+## Three project-specific UAT tasks
 
-1. Head of Manufacturing Quality finds K1, explains its denominator, snapshot and limitation.
-2. Manufacturing Quality Analyst compares one baseline/alternative case and records accept/defer/override with rationale.
-3. An operational user traces an action to source evidence and finds the manual review/escalation owner.
+1. **Business review:** At weekly quality review, inspectors examine the top confusion pairs, compare confidence thresholds and choose an offline fault-routing prototype with a specialist-review queue and three process-investigation hypotheses. The participant must explain the observed baseline, population and decision limitation without assistance from the author; record actual completion and any defect.
+2. **Policy challenge:** use the D7 artefact to compare a baseline and alternative case, then record accept/defer/override with evidence and accountable owner. The domain reviewer must independently reproduce the case outcome.
+3. **Operational walkthrough:** Reviewer finds the largest confusion pair, shows its two class recalls and traces one low-confidence case into specialist review. Retain the task recording/screenshots, expected/actual values and reviewer outcome.
 
-Record participant role, expected/observed result, defect and retest. All three must pass; static exports may support review where interactive access is unavailable.
+All three must pass after defect retest. Static exports may support review if interactive access is unavailable. The independent reviewer also checks every SC output against its declared artefact and source/configuration lineage.
 
 ## Release
 
